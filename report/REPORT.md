@@ -52,3 +52,4 @@
   - `pytest tests/ -v`
   - `python -m lab.runner --condition baseline --tasks data-learn`
 - Thử thách mở rộng: chưa thực hiện.
+<!-- hypotheses finalized before freeze -->
