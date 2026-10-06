@@ -1,0 +1,79 @@
+{
+  "task": "code-eval",
+  "condition": "skills-auto",
+  "role": "eval",
+  "error": null,
+  "timestamp": "2026-10-06T07:11:52.529489+00:00",
+  "skills_sha256": "c5edbfa35e4fe27db489962c35b2ae1fc1ce8573e3c165a5ff403519b27dc58e",
+  "seconds": 119.6,
+  "tokens": {
+    "input": 140079,
+    "output": 6410,
+    "total": 146489
+  },
+  "tool_calls": 27,
+  "subagent_calls": 0,
+  "skills_read": 2,
+  "skills_modified": false,
+  "final_message": "All 3 tests pass and every docstring example is verified. Here's what I changed:\n\n**`bookings/timeutil.py` — `parse_duration`**: Only handled `\"1h30m\"` format. Rewrote to support all documented formats: bare numbers (`\"45\"` → 45), hours-only (`\"2h\"` → 120), minutes-only (`\"45m\"` → 45), colon-separated (`\"1:30\"` → 90), and combined (`\"1h30m\"` → 90).\n\n**`bookings/billing.py` — `billable_blocks`**: Used `round()` (rounds to nearest), but docstring says \"always round UP\". Changed to `math.ceil()` and added input validation for negative minutes and non-positive block size.\n\n**`bookings/schedule.py` — `add_slot`**: Had a mutable default argument `slots=[]` causing state sharing between calls. Changed to `slots=None` with a fresh list each call, and used `slots + [slot]` (concatenation) instead of `slots.append(slot)` (mutation) so the original list is never modified.",
+  "score": 0.6363636363636364,
+  "passed": 7,
+  "total": 11,
+  "checks": [
+    {
+      "name": "visible_suite_passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "tests_not_modified",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "parse_duration_all_formats",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "other_caller_fixed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "billable_blocks_round_up",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "add_slot_no_shared_state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative_minutes_rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rule_type_hints",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_regression_tests",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_changelog",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_version_bump",
+      "passed": false,
+      "detail": ""
+    }
+  ]
+}
